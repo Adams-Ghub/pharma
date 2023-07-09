@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-// import Login from './src/screens/login';
-import Signup from './src/screens/signup';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import PharmacistWelcomeScreen from './src/screens/pharmacist/pharmacist-welcome-screen';
+import FeedBackScreen from './src/screens/pharmacist/feedback-screen';
+import PrescribtionScreen from './src/screens/pharmacist/prescription-screen';
+import AddPrescriptionScreen from './src/screens/pharmacist/add-prescription-screen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Signup />
+      <AddPrescriptionScreen />
     </View>
   );
 }
@@ -14,8 +16,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginHorizontal: 10,
+    marginVertical: 20,
   },
 });
