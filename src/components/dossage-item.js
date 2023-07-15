@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import Dropdown from 'react-native-input-select';
 
 export default function DossageItem() {
-  const [medType, setMedType] = useState('Tablet');
-  const [frequency, setFrequency] = useState('days');
+  const [country, setCountry] = useState('tablet');
   return (
     <View style={styles.mainContainer}>
       <View style={styles.medicineContainer}>
@@ -18,14 +17,23 @@ export default function DossageItem() {
         <Text style={[styles.amountText, styles.allText]}>Amount</Text>
         <View style={styles.amountInputContainer}>
           <TextInput style={styles.amountInput} />
-          {/* <Picker
-            selectedValue={medType}
-            onValueChange={(itemValue, itemIndex) => setMedType(itemValue)}
-          >
-            <Picker.Item label="Tablet" value="tablet" />
-            <Picker.Item label="Capsule" value="capsule" />
-            <Picker.Item label="ml" value="ml" />
-          </Picker> */}
+
+          <Dropdown
+            options={[
+              { name: 'Tablet', code: 'tablet' },
+              { name: 'Capsule', code: 'capsule' },
+              { name: 'ml', code: 'ml' },
+            ]}
+            optionLabel={'name'}
+            optionValue={'code'}
+            selectedValue={country}
+            onValueChange={(value) => setCountry(value)}
+            primaryColor={'green'}
+            selectedItemStyle={{ fontWeight: '600', backgroundColor:'transparent',width:170 }}
+            dropdownStyle={{borderRadius:0,backgroundColor:'transparent',margin:0,padding:0,width:100,height:9 }}
+          
+            dropdownIconStyle={{right:0,display:'none'}}
+          />
         </View>
       </View>
       <View style={styles.frequencyContainer}>
@@ -51,23 +59,46 @@ export default function DossageItem() {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
+    flex: 0.1,
     flexDirection: 'row',
-    // width: '100%',
-    // height: '100%',
+
     backgroundColor: '#aaddee',
   },
   medicineContainer: {
-    // flex: 0.5,
+    flex: 0.5,
   },
   amountContainer: {
-    // flex: 0.25,
+    flex: 0.25,
   },
   frequencyContainer: {
-    // flex: 0.25,
+    flex: 0.25,
+  },
+  frequencyInputContainer: {
+    flexDirection: 'row',
   },
   medicineText: {
     fontSize: 17,
     color: '#000',
+  },
+  medicineInput: {
+    borderStyle: 'solid',
+    borderColor: '#000',
+    borderWidth: 1,
+    fontSize: 15,
+    width: 160,
+    paddingHorizontal: 2,
+  },
+  amountInputContainer: {
+    flexDirection: 'row',
+    borderStyle: 'solid',
+    borderColor: '#000',
+    borderWidth: 1,
+    width: '85%',
+  },
+  amountInput: {
+    borderStyle: 'solid',
+    borderColor: '#000',
+    borderWidth: 1,
+    width: 20,
   },
 });

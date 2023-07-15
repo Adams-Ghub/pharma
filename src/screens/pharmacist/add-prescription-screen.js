@@ -16,10 +16,12 @@ export default function AddPrescriptionScreen() {
         <Text>Patient info</Text>
         <TextInput placeholder="Eg. John Kingston, 2yrs, 10Kg" />
       </View>
+      <DossageItem />
       <View>
         <Text>Medication & Dossage</Text>
-        <View>
-          <DossageItem />
+       
+        <View style={styles.dossageItemConainer}>
+        
         </View>
       </View>
     </View>
@@ -33,4 +35,8 @@ const styles = StyleSheet.create({
     height: '100%',
     // backgroundColor:'#450989'
   },
+  dossageItemConainer:{
+    flex:0.5,
+    width:'100%'
+  }
 });
