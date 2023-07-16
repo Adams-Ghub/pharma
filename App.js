@@ -1,14 +1,15 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import PharmacistWelcomeScreen from './src/screens/pharmacist/pharmacist-welcome-screen';
-import FeedBackScreen from './src/screens/pharmacist/feedback-screen';
-import PrescribtionScreen from './src/screens/pharmacist/prescription-screen';
+import { StyleSheet, View } from 'react-native';
+// import Login from './src/screens/login';
+import Signup from './src/screens/signup';
+import PrescriptionScreen from './src/screens/pharmacist/prescription-screen';
 import AddPrescriptionScreen from './src/screens/pharmacist/add-prescription-screen';
+import ProfileScreen from './src/screens/pharmacist/profile-screen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AddPrescriptionScreen />
+      <Signup />
     </View>
   );
 }

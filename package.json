@@ -18,7 +18,13 @@
     "react-devtools": "^4.27.8",
     "react-dom": "^18.2.0",
     "react-native": "0.71.8",
+    "react-native-input-select": "^0.35.0",
     "react-native-paper": "^5.9.0",
+    "react-native-picker-select": "^8.0.4",
+    "react-native-web": "~0.18.10",
+    "react-dom": "18.2.0",
+    "@expo/webpack-config": "^18.0.1",
+    "expo-image-picker": "~14.1.1",
     "react-native-web": "^0.18.12"
   },
   "devDependencies": {
