@@ -5,12 +5,14 @@ import Signup from './src/screens/signup';
 import PrescriptionScreen from './src/screens/pharmacist/prescription-screen';
 import AddPrescriptionScreen from './src/screens/pharmacist/add-prescription-screen';
 import ProfileScreen from './src/screens/pharmacist/profile-screen';
+import MainNavigation from './src/navigation/main-navigation';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Signup />
-    </View>
+    <NavigationContainer style={styles.container}>
+      <MainNavigation />
+    </NavigationContainer>
   );
 }
 
