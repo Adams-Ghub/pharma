@@ -9,7 +9,7 @@ import ProfileScreen from './src/screens/pharmacist/profile-screen';
 export default function App() {
   return (
     <View style={styles.container}>
-    <ProfileScreen />
+      <Signup />
     </View>
   );
 }
@@ -17,8 +17,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginHorizontal: 10,
+    marginVertical: 20,
   },
 });
