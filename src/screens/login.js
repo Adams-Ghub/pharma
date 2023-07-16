@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+// import {NavigationContainer} from '@react-navigation/native'
 
-export default function Login() {
+export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.headingSection}>
@@ -21,13 +22,13 @@ export default function Login() {
         </View>
         <View style={styles.passwordLabelInputContainer}>
           <Text style={styles.passwordText}>Password</Text>
-          <TextInput
-            secureTextEntry
-            style={styles.passwordInput}
-          />
+          <TextInput secureTextEntry style={styles.passwordInput} />
         </View>
         <View style={styles.loginButtonContainer}>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={()=>{navigation.navigate('PharmacistWelcome')}}
+          >
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
         </View>
@@ -38,7 +39,7 @@ export default function Login() {
         </View>
         <View style={styles.noAccountTextsContainer}>
           <Text style={styles.noAccountText}>Don't have account?</Text>
-          <TouchableOpacity style={styles.createAccountButton}>
+          <TouchableOpacity style={styles.createAccountButton} onPress={() => navigation.navigate('Signup')}>
             <Text style={styles.createAccountButtonText}>Create account</Text>
           </TouchableOpacity>
         </View>
@@ -53,12 +54,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#03C043',
     justifyContent: 'flex-start',
-    alignSelf: 'stretch',
+    width: '100%',
     margin: 0,
     padding: 0,
   },
   headingSection: {
     flex: 0.4,
+    height: '10%',
     justifyContent: 'center',
   },
   headingText: {
