@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginHorizontal: 8,
+    alignSelf:'center'
   },
   Profile: {
     fontSize: 18,

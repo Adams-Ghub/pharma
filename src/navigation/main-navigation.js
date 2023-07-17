@@ -16,7 +16,11 @@ function MainNavigation() {
         component={PharmacistNavigation}
         options={{ header: () => {} }}
       />
-      <Stack.Screen name="ClientWelcome" component={ClientNavigation} />
+      <Stack.Screen
+        name="ClientWelcome"
+        component={ClientNavigation}
+        options={{ header: () => {} }}
+      />
     </Stack.Navigator>
   );
 }
