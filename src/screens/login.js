@@ -27,7 +27,9 @@ export default function Login({ navigation }) {
         <View style={styles.loginButtonContainer}>
           <TouchableOpacity
             style={styles.loginButton}
-            onPress={()=>{navigation.navigate('PharmacistWelcome')}}
+            onPress={() => {
+              navigation.navigate('ClientWelcome');
+            }}
           >
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
@@ -39,7 +41,10 @@ export default function Login({ navigation }) {
         </View>
         <View style={styles.noAccountTextsContainer}>
           <Text style={styles.noAccountText}>Don't have account?</Text>
-          <TouchableOpacity style={styles.createAccountButton} onPress={() => navigation.navigate('Signup')}>
+          <TouchableOpacity
+            style={styles.createAccountButton}
+            onPress={() => navigation.navigate('Signup')}
+          >
             <Text style={styles.createAccountButtonText}>Create account</Text>
           </TouchableOpacity>
         </View>
