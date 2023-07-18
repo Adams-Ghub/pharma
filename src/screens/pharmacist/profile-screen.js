@@ -37,12 +37,13 @@ function ProfileScreen() {
           {image ? (
             image && (
               <Image
+              
                 source={{ uri: image }}
-                style={{ width: '100%', height: 350 }}
+                style={{ width: '100%', height: '100%',alignSelf:'center' }}
               />
             )
           ) : (
-            <Text>select an image</Text>
+            <Text style={styles.selectImgText}>select an image</Text>
           )}
         </TouchableOpacity>
       </View>
@@ -114,25 +115,32 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignContent: 'center',
-    width: '100%',
-    paddingHorizontal: 10,
+    alignItems: 'center',
+    marginHorizontal: 15,
   },
   imageMajorContainer: {
-    flex: 0.43,
+    flex: 0.45,
+      width:'100%',
+      marginTop:10
+  },
+  selectImgText:{
+    fontSize:20,
+    position:'relative',
+    top:'40%',
+    alignSelf:'center'
   },
   profileImageContainer: {
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: '#ddd',
     width: '100%',
-    height: 350,
+    height: '100%',
     marginVertical: 0,
     paddingVertical: 0,
   },
   bottomSection: {
-    flex: 0.57,
-    paddingTop:30
+    flex: 0.5,
+    width:'100%'
   },
   usernameEditContainer:{
     flexDirection:'row',    
@@ -158,10 +166,12 @@ const styles = StyleSheet.create({
   },
   allTextInput:{
     borderStyle:'solid',
-    borderWidth:1,
-    borderColor:'#333',
-    borderRadius:5,
-    paddingHorizontal:5
+      borderWidth:1,
+      borderColor:'#333',
+      borderRadius:5,
+      paddingHorizontal:5,
+      fontSize:14,
+      height:24,
 
   },
   editButtonText:{
@@ -173,19 +183,19 @@ const styles = StyleSheet.create({
     fontWeight:'700'    
   },
   usernameAndInputContainer:{
-    marginBottom:15
+    marginBottom:10
   },
   emailAndInputContainer:{
-    marginBottom:15
+    marginBottom:10
   },
   pharmacyAndInputContainer:{
-    marginBottom:15
+    marginBottom:10
   },
   phoneAndInputContainer:{
-    marginBottom:15
+    marginBottom:10
   },
   regNumberAndInputContainer:{
-    marginBottom:15
+    marginBottom:10
   },
   updateButton:{
     backgroundColor:'#03C043',

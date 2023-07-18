@@ -39,11 +39,11 @@ function ClientProfileScreen() {
               image && (
                 <Image
                   source={{ uri: image }}
-                  style={{ width: '100%', height: '100%' }}
+                  style={{ width: '100%', height: '100%',alignSelf:'center' }}
                 />
               )
             ) : (
-              <Text>select an image</Text>
+              <Text style={styles.selectImgText}>select an image</Text>
             )}
           </TouchableOpacity>
         </View>
@@ -123,6 +123,12 @@ function ClientProfileScreen() {
       width:'100%',
       marginTop:10
     },
+     selectImgText:{
+    fontSize:20,
+    position:'relative',
+    top:'40%',
+    alignSelf:'center'
+  },
     profileImageContainer: {
       borderStyle: 'solid',
       borderWidth: 1,
