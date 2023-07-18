@@ -129,12 +129,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     backgroundColor: '#fff',
-    width: '100%',
+
   },
   filterSection: {
     flex: 0.1,
     flexDirection: 'row',
     gap: 3,
+    paddingHorizontal:10
   },
   byIdContainer: {
     flex: 0.2,
@@ -163,6 +164,7 @@ const styles = StyleSheet.create({
 
   bottomSection: {
     flex: 0.9,
+    marginHorizontal:10
   },
   allInput: {
     borderStyle: 'solid',

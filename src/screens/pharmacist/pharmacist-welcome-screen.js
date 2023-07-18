@@ -1,21 +1,26 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import PharmacistDossageTemplate from '../../components/pharmacist-dossage-template';
 import FeedbackUser from '../../components/feedbackuser';
 
-
 const PharmacistWelcomeScreen = () => {
-  users=[
-    {name:'Sandra Momo Mensah',
-    lastChatDate:'24/09/2023',
-    lastMessage:'Thank you'},
-    {name:'Sandra Momo Mensah',
-    lastChatDate:'24/09/2023',
-    lastMessage:'Thank you'},
-    {name:'Sandra Momo Mensah',
-    lastChatDate:'24/09/2023',
-    lastMessage:'Thank you'}
-  ]
+  users = [
+    {
+      name: 'Sandra Momo Mensah',
+      lastChatDate: '24/09/2023',
+      lastMessage: 'Thank you',
+    },
+    {
+      name: 'Sandra Momo Mensah',
+      lastChatDate: '24/09/2023',
+      lastMessage: 'Thank you',
+    },
+    {
+      name: 'Sandra Momo Mensah',
+      lastChatDate: '24/09/2023',
+      lastMessage: 'Thank you',
+    },
+  ];
   return (
     <View style={styles.principalContainer}>
       <View style={styles.latestDossageSection}>
@@ -31,16 +36,17 @@ const PharmacistWelcomeScreen = () => {
         <View style={styles.feedbacksContianer}>
           <FlatList
             data={users}
-            renderItem={({item})=>{
-            return (<FeedbackUser
-              user={item.name}
-              lastChatDate={item.lastChatDate}
-              lastMessage={item.lastMessage}
-            />)
-          }}
-            keyExtractor={item=>item.index}
+            renderItem={({ item }) => {
+              return (
+                <FeedbackUser
+                  user={item.name}
+                  lastChatDate={item.lastChatDate}
+                  lastMessage={item.lastMessage}
+                />
+              );
+            }}
+            keyExtractor={(item) => item.index}
           />
-        
         </View>
       </View>
     </View>
@@ -51,23 +57,25 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     width: '100%',
-    marginHorizontal: 5,
+    justifyContent: 'space-between',
+    gap: 10,
   },
   latestDossageSection: {
-    flex: 0.5,
+    flex: 0.45,
+    marginHorizontal: 15,
   },
 
   latestDossageText: {
     padding: 0,
-    marginHorizontal: 10,
-    marginVertical: 0,
+    marginTop: 10,
+    marginBottom:4,
     color: '#03C043',
     fontSize: 20,
     fontWeight: '600',
   },
   latestFeedbackSection: {
     flex: 0.5,
-    flexDirection:'column',
+    flexDirection: 'column',
   },
   latestFeedbackText: {
     padding: 0,
@@ -77,10 +85,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
   },
-  feedbacksContianer:{
-    flexDirection:'column',
-    
-  }
+  feedbacksContianer: {
+    flexDirection: 'column',
+    marginHorizontal: 15,
+    marginTop: 5,
+  },
 });
 
 export default PharmacistWelcomeScreen;

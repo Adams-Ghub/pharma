@@ -55,7 +55,7 @@ export default function FeedBackScreen() {
       <View style={styles.screenTitleContainer}>
         <Text style={styles.screenTitleText}>Feedbacks</Text>
       </View>
-      <View>
+      <View style={styles.bottomSection}>
         <FlatList
           data={users}
           renderItem={({ item }) => {
@@ -79,6 +79,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     width: '100%',
+    marginLeft:8,
+    marginRight:8
+  },
+  screenTitleContainer:{
+    flex:0.06,
+    justifyContent:'center',
+    
+  },
+  bottomSection:{
+    flex:0.94
   },
   screenTitleText: {
     color: '#03C043',
