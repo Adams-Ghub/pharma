@@ -7,9 +7,31 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { UserLogin } from '../../redux/users/usersActions';
 // import {NavigationContainer} from '@react-navigation/native'
 
 export default function Login({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.users);
+
+  const handleLogin = () => {
+    dispatch(UserLogin({email, password}));
+    console.log('email/password:', email + '/' + password);
+  };
+
+  useEffect(() => {
+    if (user) {
+      console.log('role:', user.details.role);
+      user.details.role === 'customer'
+        ? navigation.navigate('ClientWelcome')
+        : navigation.navigate('PharmacistWelcome');
+    }
+  }, [user]);
+
   return (
     <View style={styles.container}>
       <View style={styles.headingSection}>
@@ -18,18 +40,25 @@ export default function Login({ navigation }) {
       <ScrollView style={styles.bottomSection}>
         <View style={styles.emailLabelInputContainer}>
           <Text style={styles.emailText}>Email Address</Text>
-          <TextInput style={styles.emailInput} />
+          <TextInput
+            style={styles.emailInput}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
         </View>
         <View style={styles.passwordLabelInputContainer}>
           <Text style={styles.passwordText}>Password</Text>
-          <TextInput secureTextEntry style={styles.passwordInput} />
+          <TextInput
+            secureTextEntry
+            style={styles.passwordInput}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
         </View>
         <View style={styles.loginButtonContainer}>
           <TouchableOpacity
             style={styles.loginButton}
-            onPress={() => {
-              navigation.navigate('PharmacistWelcome');
-            }}
+            onPress={() => handleLogin()}
           >
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>

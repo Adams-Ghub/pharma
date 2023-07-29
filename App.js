@@ -7,12 +7,16 @@ import AddPrescriptionScreen from './src/screens/pharmacist/add-prescription-scr
 import ProfileScreen from './src/screens/pharmacist/profile-screen';
 import MainNavigation from './src/navigation/main-navigation';
 import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 export default function App() {
   return (
-    <NavigationContainer style={styles.container}>
-      <MainNavigation />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer style={styles.container}>
+        <MainNavigation />
+      </NavigationContainer>
+    </Provider>
   );
 }
 

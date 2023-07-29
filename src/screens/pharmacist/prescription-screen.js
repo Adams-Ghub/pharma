@@ -10,7 +10,7 @@ import {
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import PrescriptionItem from '../../components/prescription-item';
 
-export default function PrescriptionScreen() {
+export default function PrescriptionScreen({navigation}) {
   prescribtions = [
     {
       Id: '7ae458o90',
@@ -111,7 +111,11 @@ export default function PrescriptionScreen() {
         />
       </View>
       <View>
-        <TouchableOpacity style={styles.createPrescriptionButton}>
+        <TouchableOpacity style={styles.createPrescriptionButton}
+          onPress={()=>{
+            navigation.navigate('AddPrescription')
+          }}
+        >
           <AntDesign
             name="plus"
             size={24}

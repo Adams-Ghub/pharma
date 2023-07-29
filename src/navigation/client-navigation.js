@@ -82,7 +82,7 @@ function ClientNavigation({ navigation }) {
         drawerStyle: {
           backgroundColor: '#03C043',
           width: '55%',
-          marginTop: '7%',
+          paddingTop: '20%',
         },
       }}
     >

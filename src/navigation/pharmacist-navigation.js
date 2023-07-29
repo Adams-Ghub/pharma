@@ -1,9 +1,11 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import { DrawerActions } from '@react-navigation/native';
 import DrawerItem from '../components/drawer-item';
 import Account from '../screens/pharmacist/profile-screen';
 import PrescriptionScreen from '../screens/pharmacist/prescription-screen';
+import AddPrescriptionScreen from '../screens/pharmacist/add-prescription-screen';
 import Feedback from '../screens/pharmacist/feedback-screen';
 import Home from '../screens/pharmacist/pharmacist-welcome-screen';
 import { TouchableOpacity, View, Text, Image } from 'react-native';
@@ -14,6 +16,30 @@ import {
   Ionicons,
 } from '@expo/vector-icons';
 import profileImg from '../../assets/profile.png';
+
+const Stack = createNativeStackNavigator();
+const PrescriptionNavigatior=()=> {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        header: () => null,
+      }}
+      initialRouteName="PrescriptionScreen"
+      
+    >
+      <Stack.Screen
+        name="PrescriptionScreen"
+        // options={{ header: () => {} }}
+        component={PrescriptionScreen}
+      />    
+      <Stack.Screen
+        name="AddPrescription"
+        // options={{ header: () => {} }}
+        component={AddPrescriptionScreen}
+      />    
+    </Stack.Navigator>
+  );
+}
 
 function PharmacistNavigation({ navigation }) {
   const Drawer = createDrawerNavigator();
@@ -79,7 +105,7 @@ function PharmacistNavigation({ navigation }) {
         drawerStyle: {
           backgroundColor: '#03C043',
           width: '55%',
-          marginTop: '7%',
+          paddingTop: '10%',
         },
       }}
     >
@@ -133,7 +159,7 @@ function PharmacistNavigation({ navigation }) {
       />
       <Drawer.Screen
         name="Prescription"
-        component={PrescriptionScreen}
+        component={PrescriptionNavigatior}
         options={{
           drawerLabel: () => {
             return (
@@ -179,6 +205,7 @@ function PharmacistNavigation({ navigation }) {
           },
         }}
       />
+        {/* <Drawer.Screen name="AddPrescription" component={AddPrescriptionScreen} /> */}
     </Drawer.Navigator>
   );
 }

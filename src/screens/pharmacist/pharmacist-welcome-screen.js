@@ -4,7 +4,7 @@ import PharmacistDossageTemplate from '../../components/pharmacist-dossage-templ
 import FeedbackUser from '../../components/feedbackuser';
 
 const PharmacistWelcomeScreen = () => {
-  users = [
+  const users = [
     {
       name: 'Sandra Momo Mensah',
       lastChatDate: '24/09/2023',
