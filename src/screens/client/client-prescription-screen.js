@@ -11,7 +11,7 @@ import {
   import ClentPrescriptionItem from '../../components/client-prescription-item';
 
 function ClientPrescriptionScreen() {
-    prescribtions = [
+   const prescribtions = [
         {
           Id: '7ae458o90',
           pharmacy : 'Sikwa Pharmacy',

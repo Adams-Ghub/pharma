@@ -4,7 +4,7 @@ import ClientDossageTemplate from '../../components/client-dossage-template';
 import ClientFeedbackUser from '../../components/feedbackuser';
 
 function ClientWelcomeScreen() {
-  users = [
+  const users = [
     {
       name: 'Ivy Osardu',
       lastChatDate: '24/09/2023',

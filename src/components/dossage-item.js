@@ -14,43 +14,18 @@ export default function DossageItem() {
         />
       </View>
       <View style={styles.amountContainer}>
-        <Text style={[styles.amountText, styles.allText]}>Amount</Text>
+        <Text style={[styles.amountText, styles.allText]}>amount</Text>
         <View style={styles.amountInputContainer}>
-          <TextInput style={styles.amountInput} />
-
-          <Dropdown
-            options={[
-              { name: 'Tablet', code: 'tablet' },
-              { name: 'Capsule', code: 'capsule' },
-              { name: 'ml', code: 'ml' },
-            ]}
-            optionLabel={'name'}
-            optionValue={'code'}
-            selectedValue={country}
-            onValueChange={(value) => setCountry(value)}
-            primaryColor={'green'}
-            selectedItemStyle={{ fontWeight: '600', backgroundColor:'transparent',width:170 }}
-            dropdownStyle={{borderRadius:0,backgroundColor:'transparent',margin:0,padding:0,width:100,height:9 }}
-          
-            dropdownIconStyle={{right:0,display:'none'}}
-          />
+          <TextInput style={styles.amountInput} placeholder="1" />
+          <TextInput style={styles.amountTypeInput} placeholder="tablet" />
         </View>
       </View>
       <View style={styles.frequencyContainer}>
         <Text style={[styles.frequencyText, styles.allText]}>frequency</Text>
         <View style={styles.frequencyInputContainer}>
-          <TextInput style={styles.frequencyNumOfTimes} />
+          <TextInput style={styles.frequencyNumOfTimes} placeholder="3" />
           <Text>x</Text>
-          <TextInput style={styles.frequencyOption} />
-          {/* <Picker
-            selectedValue={frequency}
-            onValueChange={(itemValue, itemIndex) => setFrequency(itemValue)}
-          >
-            <Picker.Item label="Hour(s)" value="hrs" />
-            <Picker.Item label="Day(s)" value="days" />
-            <Picker.Item label="Week(s)" value="weeks" />
-            <Picker.Item label="Month(s)" value="months" />
-          </Picker> */}
+          <TextInput style={styles.frequencyOption} placeholder="daily" />
         </View>
       </View>
     </View>
@@ -59,10 +34,11 @@ export default function DossageItem() {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 0.1,
+    flex: 0,
     flexDirection: 'row',
-
-    backgroundColor: '#aaddee',
+    justifyContent: 'flex-start',
+    marginVertical: 4,
+    gap: 12,
   },
   medicineContainer: {
     flex: 0.5,
@@ -72,33 +48,66 @@ const styles = StyleSheet.create({
   },
   frequencyContainer: {
     flex: 0.25,
+    justifyContent: 'flex-start',
   },
   frequencyInputContainer: {
+    flex: 1,
     flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: 1,
+    width:'100%'
+  },
+  frequencyNumOfTimes: {
+    flex: 0.25,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    textAlign: 'center',
+  },
+  frequencyOption: {
+    flex: 0.65,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    textAlign: 'center',
+  },
+  allText: {
+    fontSize: 15,
+    color: '#000',
+    fontWeight:'500',
   },
   medicineText: {
-    fontSize: 17,
+    fontSize: 15,
     color: '#000',
+    fontWeight:'500',
   },
   medicineInput: {
     borderStyle: 'solid',
     borderColor: '#000',
     borderWidth: 1,
     fontSize: 15,
-    width: 160,
+    width: '100%',
     paddingHorizontal: 2,
   },
   amountInputContainer: {
+    flex: 1,
     flexDirection: 'row',
-    borderStyle: 'solid',
-    borderColor: '#000',
-    borderWidth: 1,
-    width: '85%',
+    justifyContent: 'flex-start',
+    gap: 1,
+    alignItems: 'center',
+    width:'100%'
   },
   amountInput: {
     borderStyle: 'solid',
     borderColor: '#000',
     borderWidth: 1,
-    width: 20,
+    textAlign: 'center',
+    width: '30%',
+  },
+  amountTypeInput: {
+    borderStyle: 'solid',
+    borderColor: '#000',
+    borderWidth: 1,
+    textAlign: 'center',
+    width: '70%',
   },
 });

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import ClientFeedbackUser from '../../components/clientFeedbackUser';
 
 function ClientFeedbackScreen() {
-  users = [
+  const users = [
     {
       name: 'Ivy Osardu',
       lastChatDate: '24/09/2023',

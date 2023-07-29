@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { RadioButton } from 'react-native-paper';
 import {
   ScrollView,
@@ -8,16 +9,50 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { RegisterUser } from '../../redux/users/usersActions';
+import Modal from 'react-native-modal';
 
 export default function Signup({ navigation }) {
+  const dispatch = useDispatch();
   const [checked, setChecked] = useState('first');
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [role, setRole] = useState('customer');
+  const [phone, setPhone] = useState();
+  const [registration, setRegistration] = useState('none');
+  const [isModalVisible, setModalVisible] = useState(false);
+  
+  const { currentUser } = useSelector((state) => state.users);
+
+  const handleSignUp =  () => {
+  dispatch(RegisterUser({ email, password, role, phone, registration }));
+  
+  };
+
+  useEffect(() => {
+    if (currentUser) {
+      setModalVisible(true);
+    }
+  }, [currentUser]);
+
+  const handleModalClose = () => {
+    setModalVisible(false);
+    navigation.navigate('Login');
+  };
+
 
   const displayRegistrationSection = () => {
     if (checked === 'second') {
       return (
         <View style={styles.registrationLabelInputContainer}>
           <Text style={styles.registrationText}>Registration Number</Text>
-          <TextInput style={styles.registrationInput} />
+          <TextInput
+            style={styles.registrationInput}
+            onChangeText={(text) => {
+              setRegistration(text);
+              setRole('pharmacist');
+            }}
+          />
         </View>
       );
     }
@@ -30,15 +65,25 @@ export default function Signup({ navigation }) {
       <ScrollView style={styles.bottomSection}>
         <View style={styles.phoneLabelInputContainer}>
           <Text style={styles.phoneText}>Phone</Text>
-          <TextInput style={styles.phoneInput} />
+          <TextInput
+            style={styles.phoneInput}
+            onChangeText={(text) => setPhone(text)}
+          />
         </View>
         <View style={styles.emailLabelInputContainer}>
           <Text style={styles.emailText}>Email Address</Text>
-          <TextInput style={styles.emailInput} />
+          <TextInput
+            style={styles.emailInput}
+            onChangeText={(text) => setEmail(text)}
+          />
         </View>
         <View style={styles.passwordLabelInputContainer}>
           <Text style={styles.passwordText}>Password</Text>
-          <TextInput secureTextEntry style={styles.passwordInput} />
+          <TextInput
+            secureTextEntry
+            style={styles.passwordInput}
+            onChangeText={(text) => setPassword(text)}
+          />
         </View>
         <View style={styles.radioButtonsContainer}>
           <View style={styles.regularRadioButtonContainer}>
@@ -62,7 +107,10 @@ export default function Signup({ navigation }) {
         </View>
         <View>{displayRegistrationSection()}</View>
         <View style={styles.signupButtonContainer}>
-          <TouchableOpacity style={styles.signupButton}>
+          <TouchableOpacity
+            style={styles.signupButton}
+            onPress={() => handleSignUp()}
+          >
             <Text style={styles.signupButtonText}>Sign up</Text>
           </TouchableOpacity>
         </View>
@@ -79,6 +127,14 @@ export default function Signup({ navigation }) {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      <Modal isVisible={isModalVisible}>
+        <View style={styles.modalContainer}>
+          <Text style={styles.modalText}>User signed up successfully!</Text>
+          <TouchableOpacity style={styles.modalButton} onPress={handleModalClose}>
+            <Text style={styles.modalButtonText}>OK</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -233,5 +289,28 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     color: '#050505',
     fontSize: 18,
+  },
+
+  modalContainer: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 16,
+    alignItems: 'center',
+  },
+  modalText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  modalButton: {
+    backgroundColor: '#03C043',
+    borderRadius: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  modalButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
